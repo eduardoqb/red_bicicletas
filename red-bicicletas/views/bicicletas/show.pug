@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+
+  a(href='/bicicletas') Volver
+
+  .divider-custom
+
+  .container
+    // Show Section Heading
+    h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 Información Bicicleta
+    // Icon Divider
+    .divider-custom
+      .divider-custom-line
+      .divider-custom-icon
+        i.fas.fa-star
+      .divider-custom-line
+    // Show Section Form
+    .row
+      .col-lg-8.mx-auto
+        form#contactForm
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label ID
+              input.form-control(name='id' type='text' value=`${bici.id}` disabled)
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Color
+              input.form-control(name='color' type='text' value=bici.color disabled)
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Modelo
+              input.form-control(name='modelo' type='text' value=`${bici.modelo}` disabled)
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Latitud
+              input.form-control(name='latitud' type='text' value=bici.ubicacion[0] disabled)
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Longitud
+              input.form-control(name='longitud' type='text' value=`${bici.ubicacion[1]}` disabled)
+              
+          
+
+  

@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+
+  a(href='/bicicletas') Volver
+
+  .divider-custom
+
+  .container
+    // Update Section Heading
+    h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 Modificar Bicicleta
+    // Icon Divider
+    .divider-custom
+      .divider-custom-line
+      .divider-custom-icon
+        i.fas.fa-star
+      .divider-custom-line
+    // Update Section Form
+    .row
+      .col-lg-8.mx-auto
+        form#contactForm(name='sentMessage' action=`/bicicletas/${bici.id}/update` method='post')
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label ID
+              input#name.form-control(name='id' type='text' value=`${bici.id}` required='required' data-validation-required-message='Please enter your name.')
+              p.help-block.text-danger
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Color
+              input#email.form-control(name='color' type='text' value=bici.color required='required' data-validation-required-message='Please enter your email address.')
+              p.help-block.text-danger
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Modelo
+              input#phone.form-control(name='modelo' type='text' value=`${bici.modelo}` required='required' data-validation-required-message='Please enter your phone number.')
+              p.help-block.text-danger
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Latitud
+              input#phone.form-control(name='latitud' type='text' value=bici.ubicacion[0] required='required' data-validation-required-message='Please enter your phone number.')
+              p.help-block.text-danger
+          .control-group
+            .form-group.controls.mb-0.pb-2
+              label Longitud
+              input#phone.form-control(name='longitud' type='text' value=`${bici.ubicacion[1]}` required='required' data-validation-required-message='Please enter your phone number.')
+              p.help-block.text-danger
+          br
+          #success
+          .form-group
+            button.btn.btn-primary.btn-xl(type='submit') Ok
+
+  

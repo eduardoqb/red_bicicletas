@@ -1,6 +1,5 @@
-var Bicicleta = function(id, color, modelo, ubicacion)
-{
-    this.id= id;
+var Bicicleta = function(id, color, modelo, ubicacion){
+    this.id = id;
     this.color = color;
     this.modelo = modelo;
     this.ubicacion = ubicacion;
@@ -30,9 +29,7 @@ Bicicleta.removeById = function(aBiciId){
             Bicicleta.allBicis.splice(i, 1);
             break;
         }
-
     }
-
 }
 
 var a = new Bicicleta(1, 'Rojo', 'Urbana', [3.449363, -76.542159]);

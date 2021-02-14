@@ -1,32 +1,27 @@
 var Bicicleta = require('../../models/bicicleta');
 
-exports.bicicleta_list = function(req, res){
+exports.bicicleta_list = async function (req, res) {
+    let bicicletas = await Bicicleta.allBicis();
     res.status(200).json({
-        bicicletas: Bicicleta.allBicis
+        bicicletas: bicicletas
     });
 }
 
-exports.bicicleta_create = function(req, res){
-    var bici = new Bicicleta(req.body.id, req.body.color, req.body.modelo, [req.body.latitud, req.body.longitud]);
+exports.bicicleta_create = function (req, res) {
+    let bici = Bicicleta.createInstance(req.body.codigo, req.body.color, req.body.modelo, req.body.latitud, req.body.longitud);
     Bicicleta.add(bici);
-
-    res.status(200).json({
+    res.status(201).json({
         bicicleta: bici
     });
 }
 
-exports.bicicleta_delete = function(req, res){
-    Bicicleta.removeById(req.body.id);
-    res.status(204).send();
+exports.bicicleta_delete = async function (req, res) {
+    let result = await Bicicleta.removeByCodigo(req.body.codigo);
+    res.status(200).send('Eliminado: ' + result);
 }
 
-exports.bicicleta_update = function(req, res){
-    var bici = Bicicleta.findById(req.body.id);
-    bici.id = req.body.id;
-    bici.color = req.body.color;
-    bici.modelo = req.body.modelo;
-    bici.ubicacion = [req.body.latitud, req.body.longitud];
-
+exports.bicicleta_update = async function (req, res) {
+    let bici = await Bicicleta.findByCodigoAndUpdate(req.body.codigo, req.body.color, req.body.modelo, req.body.latitud, req.body.longitud);
     res.status(200).json({
         bicicleta: bici
     });

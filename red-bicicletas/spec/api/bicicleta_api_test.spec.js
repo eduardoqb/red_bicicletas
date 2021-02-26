@@ -10,7 +10,7 @@ describe('Bicicleta API', () => {
         // Demonstrate the readyState and on event emitters
         //console.log(mongoose.connection.readyState); //logs 0
         mongoose.connection.on('connecting', () => { 
-        console.log('connecting')
+        console.log('connecting');
         //console.log(mongoose.connection.readyState); //logs 2
         });
         mongoose.connection.on('connected', () => {

@@ -8,9 +8,9 @@ exports.usuario_list = async function (req, res) {
     });
 }
 
-exports.usuario_create = function (req, res) {
+exports.usuario_create = async function (req, res) {
     let usuario = new Usuario({ nombre: req.body.nombre });
-    usuario.save();
+    await usuario.save();
     res.status(201).json({
         usuario: usuario
     });
@@ -31,7 +31,7 @@ exports.reserva_list = async function (req, res) {
 exports.usuario_reservar = async function (req, res) {
     let usuario = await Usuario.usuario_get(req.body.nombre);
     let reserva = await usuario.reservar(req.body.biciId, req.body.desde, req.body.hasta);
-    res.status(200).json({
+    res.status(201).json({
         reserva: reserva
     });
 }
